@@ -15,6 +15,7 @@ public class Book {
     @Size(min = 2, max = 50, message = "Имя автора должно быть длиной от 2 до 50 символов")
     private String author;
     @Min(value = 1500, message = "Год должен быть больше, чем 1500")
+    @Max(value = 2024, message = "Год должен быть меньше, чем 2024")
     private int year;
 
     public Book(){}
