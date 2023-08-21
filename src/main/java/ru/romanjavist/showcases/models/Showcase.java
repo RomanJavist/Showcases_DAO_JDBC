@@ -2,7 +2,7 @@ package ru.romanjavist.showcases.models;
 
 import javax.validation.constraints.*;
 
-public class Person {
+public class Showcase {
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
@@ -13,10 +13,10 @@ public class Person {
     @Max(value = 2005, message = "Год рождения должен быть меньше, чем 2005")
     private int yearOfBirth;
 
-    public Person() {
+    public Showcase() {
     }
 
-    public Person(String fullName, int yearOfBirth) {
+    public Showcase(String fullName, int yearOfBirth) {
         this.fullName = fullName;
         this.yearOfBirth = yearOfBirth;
     }

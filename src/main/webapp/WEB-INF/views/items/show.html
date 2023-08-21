@@ -17,9 +17,9 @@
 <div th:if="${people}">
     <span>Эта книга свободна. Кому ее назначить?</span>
     <form th:method="PATCH" th:action="@{/items/{id}/assign(id=${item.getId()})}">
-        <label for="person">Выберите человека:</label>
-        <select th:object="${person}" th:field="*{id}" id="person">
-            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}">
+        <label for="showcase">Выберите человека:</label>
+        <select th:object="${showcase}" th:field="*{id}" id="showcase">
+            <option th:each="showcase : ${people}" th:value="${showcase.getId()}" th:text="${showcase.getFullName()}">
             </option>
         </select>
         <input type="submit" value="Назначить книгу"/>

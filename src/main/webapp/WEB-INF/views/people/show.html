@@ -5,7 +5,7 @@
     <title>Информация о читателе</title>
 </head>
 <body>
-<p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">VALUE</p>
+<p th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">VALUE</p>
 
 <div th:if="${books.isEmpty()}">
     <p>Человек пока не взял ни одной книги</p>
@@ -25,14 +25,14 @@
 <hr>
 <a href="/people/">Вернуться к списку читателей</a>
 <br>
-<a href="/books/">Перейти к списку книг</a>
+<a href="/items/">Перейти к списку книг</a>
 <hr>
 
-<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+<form th:method="GET" th:action="@{/people/{id}/edit(id=${showcase.getId()})}">
     <input type="submit" value="Редактировать читателя">
 </form>
 
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+<form th:method="DELETE" th:action="@{/people/{id}(id=${showcase.getId()})}">
     <input type="submit" value="Удалить читателя"/>
 </form>
 </body>

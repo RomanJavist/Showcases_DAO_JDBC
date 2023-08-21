@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}"
-       th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">user</a>
+<div th:each="showcase : ${people}">
+    <a th:href="@{/people/{id}(id=${showcase.getId()})}"
+       th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">user</a>
 </div>
 
 <br/>
@@ -18,7 +18,7 @@
 
 <br/>
 <hr/>
-<a href="/books">Перейти в список книг</a>
+<a href="/items">Перейти в список книг</a>
 
 </body>
 </html>

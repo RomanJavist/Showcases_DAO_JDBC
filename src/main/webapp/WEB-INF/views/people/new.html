@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/people}" th:object="${person}">
+<form th:method="POST" th:action="@{/people}" th:object="${showcase}">
     <label for="fullName">Введите ФИО: </label>
     <input type="text" th:field="*{fullName}" id="fullName"/>
     <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>
