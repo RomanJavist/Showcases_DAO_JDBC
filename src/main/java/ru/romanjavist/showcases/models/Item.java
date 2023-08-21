@@ -1,11 +1,11 @@
-package ru.alishev.springcourse.models;
+package ru.romanjavist.showcases.models;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class Book {
+public class Item {
 
     private int id;
     @NotEmpty(message = "Книга не может быть без названия")
@@ -18,8 +18,8 @@ public class Book {
     @Max(value = 2024, message = "Год должен быть меньше, чем 2024")
     private int year;
 
-    public Book(){}
-    public Book(String title, String author, int year) {
+    public Item(){}
+    public Item(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.year = year;

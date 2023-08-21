@@ -1,11 +1,11 @@
-package ru.alishev.springcourse.util;
+package ru.romanjavist.showcases.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.alishev.springcourse.dao.PersonDAO;
-import ru.alishev.springcourse.models.Person;
+import ru.romanjavist.showcases.dao.PersonDAO;
+import ru.romanjavist.showcases.models.Person;
 
 @Component
 public class PersonValidator implements Validator {

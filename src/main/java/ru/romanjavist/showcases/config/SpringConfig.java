@@ -1,4 +1,4 @@
-package ru.alishev.springcourse.config;
+package ru.romanjavist.showcases.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +17,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan("ru.alishev.springcourse")
+@ComponentScan("ru.romanjavist.showcases")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
@@ -60,7 +60,7 @@ public class SpringConfig implements WebMvcConfigurer {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/library_db");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/showcases_test_db");
         dataSource.setUsername("postgres");
         dataSource.setPassword("admin");
 

@@ -1,13 +1,13 @@
-package ru.alishev.springcourse.controllers;
+package ru.romanjavist.showcases.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.alishev.springcourse.dao.PersonDAO;
-import ru.alishev.springcourse.models.Person;
-import ru.alishev.springcourse.util.PersonValidator;
+import ru.romanjavist.showcases.dao.PersonDAO;
+import ru.romanjavist.showcases.models.Person;
+import ru.romanjavist.showcases.util.PersonValidator;
 
 import javax.validation.Valid;
 

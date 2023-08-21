@@ -1,4 +1,4 @@
-package ru.alishev.springcourse.models;
+package ru.romanjavist.showcases.models;
 
 import javax.validation.constraints.*;
 

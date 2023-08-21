@@ -1,11 +1,11 @@
-package ru.alishev.springcourse.dao;
+package ru.romanjavist.showcases.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
+import ru.romanjavist.showcases.models.Item;
+import ru.romanjavist.showcases.models.Person;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,8 +48,8 @@ public class PersonDAO {
     }
 
     // Здесь Join не нужен. Так как уже получили человека с помощью отдельного метода
-    public List<Book> getBooksByPersonId(int id) {
-        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Book.class));
+    public List<Item> getBooksByPersonId(int id) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Item.class));
     }
 }
 

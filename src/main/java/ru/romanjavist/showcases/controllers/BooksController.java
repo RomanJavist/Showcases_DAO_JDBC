@@ -1,13 +1,13 @@
-package ru.alishev.springcourse.controllers;
+package ru.romanjavist.showcases.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.alishev.springcourse.dao.BookDAO;
-import ru.alishev.springcourse.dao.PersonDAO;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
+import ru.romanjavist.showcases.dao.BookDAO;
+import ru.romanjavist.showcases.dao.PersonDAO;
+import ru.romanjavist.showcases.models.Item;
+import ru.romanjavist.showcases.models.Person;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -45,17 +45,17 @@ public class BooksController {
     }
 
     @GetMapping("/new")
-    public String newBook(@ModelAttribute("book") Book book) {
+    public String newBook(@ModelAttribute("book") Item item) {
         return "books/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("book") @Valid Book book,
+    public String create(@ModelAttribute("book") @Valid Item item,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "books/new";
 
-        bookDAO.save(book);
+        bookDAO.save(item);
         return "redirect:/books";
     }
 
@@ -66,12 +66,12 @@ public class BooksController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult,
+    public String update(@ModelAttribute("book") @Valid Item item, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "books/edit";
 
-        bookDAO.update(id, book);
+        bookDAO.update(id, item);
         return "redirect:/books";
     }
 

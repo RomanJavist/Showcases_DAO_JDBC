@@ -1,4 +1,4 @@
-package ru.alishev.springcourse.config;
+package ru.romanjavist.showcases.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;

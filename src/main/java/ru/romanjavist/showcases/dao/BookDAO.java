@@ -1,11 +1,11 @@
-package ru.alishev.springcourse.dao;
+package ru.romanjavist.showcases.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
+import ru.romanjavist.showcases.models.Item;
+import ru.romanjavist.showcases.models.Person;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,21 +20,21 @@ public class BookDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Book> index() {
-        return jdbcTemplate.query("SELECT * FROM Book", new BeanPropertyRowMapper<>(Book.class));
+    public List<Item> index() {
+        return jdbcTemplate.query("SELECT * FROM Book", new BeanPropertyRowMapper<>(Item.class));
     }
 
-    public Book show(int id) {
-        return jdbcTemplate.query("SELECT * FROM Book WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Book.class))
+    public Item show(int id) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Item.class))
                 .stream().findAny().orElse(null);
     }
 
-    public void save(Book book) {
-        jdbcTemplate.update("INSERT INTO Book(title, author, year) VALUES(?, ?, ?)", book.getTitle(), book.getAuthor(), book.getYear());
+    public void save(Item item) {
+        jdbcTemplate.update("INSERT INTO Book(title, author, year) VALUES(?, ?, ?)", item.getTitle(), item.getAuthor(), item.getYear());
     }
 
-    public void update(int id, Book updatedBook) {
-        jdbcTemplate.update("UPDATE Book SET title=?, author=?, year=? WHERE id=?", updatedBook.getTitle(), updatedBook.getAuthor(), updatedBook.getYear(), id);
+    public void update(int id, Item updatedItem) {
+        jdbcTemplate.update("UPDATE Book SET title=?, author=?, year=? WHERE id=?", updatedItem.getTitle(), updatedItem.getAuthor(), updatedItem.getYear(), id);
     }
 
     public void delete(int id) {
