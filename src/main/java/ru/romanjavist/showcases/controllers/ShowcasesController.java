@@ -7,12 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.romanjavist.showcases.dao.ShowcaseDAO;
 import ru.romanjavist.showcases.models.Showcase;
-import ru.romanjavist.showcases.util.PersonValidator;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/people")
+@RequestMapping("/showcases")
 public class ShowcasesController {
 
     private final ShowcaseDAO showcaseDAO;
@@ -25,51 +24,51 @@ public class ShowcasesController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("people", showcaseDAO.index());
-        return "people/index";
+        model.addAttribute("showcases", showcaseDAO.index());
+        return "showcases/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("person", showcaseDAO.show(id));
-        model.addAttribute("books", showcaseDAO.getBooksByPersonId(id));
-        return "people/show";
+        model.addAttribute("showcase", showcaseDAO.show(id));
+        model.addAttribute("items", showcaseDAO.getBooksByPersonId(id));
+        return "showcases/show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("person") Showcase showcase) {
-        return "people/new";
+    public String newPerson(@ModelAttribute("showcase") Showcase showcase) {
+        return "showcases/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid Showcase showcase,
+    public String create(@ModelAttribute("showcase") @Valid Showcase showcase,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "people/new";
+            return "showcases/new";
 
         showcaseDAO.save(showcase);
-        return "redirect:/people";
+        return "redirect:/showcases";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("person", showcaseDAO.show(id));
-        return "people/edit";
+        model.addAttribute("showcase", showcaseDAO.show(id));
+        return "showcases/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid Showcase showcase, BindingResult bindingResult,
+    public String update(@ModelAttribute("showcase") @Valid Showcase showcase, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
-            return "people/edit";
+            return "showcases/edit";
 
         showcaseDAO.update(id, showcase);
-        return "redirect:/people";
+        return "redirect:/showcases";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         showcaseDAO.delete(id);
-        return "redirect:/people";
+        return "redirect:/showcases";
     }
 }

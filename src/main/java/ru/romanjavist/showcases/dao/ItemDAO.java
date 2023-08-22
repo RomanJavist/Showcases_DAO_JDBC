@@ -38,22 +38,22 @@ public class ItemDAO {
     }
 
     public void delete(int id) {
-        jdbcTemplate.update("DELETE FROM Book WHERE id=?", id);
+        jdbcTemplate.update("DELETE FROM Item WHERE id=?", id);
     }
 
     // Join-им таблицы Book и Person и получаем человека, которому принадлежит книга с указанным id
     public Optional<Showcase> getBookOwner(int id) {
         // Выбираем все колонки таблицы Person из объединенной таблицы
-        return jdbcTemplate.query("SELECT Person.* FROM Book JOIN Person ON Book.person_id = Person.id WHERE Book.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
+        return jdbcTemplate.query("SELECT Showcase.* FROM Item JOIN Showcase ON Item.person_id = Showcase.id WHERE Item.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
     }
 
     // Освобождает книгу (этот метод вызывается, когда человек возвращает книгу в библиотеку)
     public void release(int id) {
-        jdbcTemplate.update("UPDATE Book SET person_id = NULL WHERE id = ?", id);
+        jdbcTemplate.update("UPDATE Item SET person_id = NULL WHERE id = ?", id);
     }
 
     // Назначает книгу человеку (этот метод вызывается, когда человек забирает книгу из библиотеки)
     public void assign(int id, Showcase selectedShowcase) {
-        jdbcTemplate.update("UPDATE Book SET person_id=? WHERE id=?", selectedShowcase.getId(), id);
+        jdbcTemplate.update("UPDATE Item SET person_id=? WHERE id=?", selectedShowcase.getId(), id);
     }
 }

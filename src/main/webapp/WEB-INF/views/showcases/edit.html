@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/people/{id}(id=${showcase.getId()})}" th:object="${showcase}">
+<form th:method="PATCH" th:action="@{/showcases/{id}(id=${showcase.getId()})}" th:object="${showcase}">
     <label for="fullName">Введите новое имя: </label>
     <input type="text" th:field="*{fullName}" id="fullName"/>
     <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>

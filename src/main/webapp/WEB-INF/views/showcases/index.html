@@ -6,8 +6,8 @@
 </head>
 <body>
 
-<div th:each="showcase : ${people}">
-    <a th:href="@{/people/{id}(id=${showcase.getId()})}"
+<div th:each="showcase : ${showcases}">
+    <a th:href="@{/showcases/{id}(id=${showcase.getId()})}"
        th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">user</a>
 </div>
 

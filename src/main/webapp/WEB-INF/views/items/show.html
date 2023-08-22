@@ -14,12 +14,12 @@
     </form>
 </div>
 
-<div th:if="${people}">
+<div th:if="${showcases}">
     <span>Эта книга свободна. Кому ее назначить?</span>
     <form th:method="PATCH" th:action="@{/items/{id}/assign(id=${item.getId()})}">
         <label for="showcase">Выберите человека:</label>
         <select th:object="${showcase}" th:field="*{id}" id="showcase">
-            <option th:each="showcase : ${people}" th:value="${showcase.getId()}" th:text="${showcase.getFullName()}">
+            <option th:each="showcase : ${showcases}" th:value="${showcase.getId()}" th:text="${showcase.getFullName()}">
             </option>
         </select>
         <input type="submit" value="Назначить книгу"/>
@@ -28,7 +28,7 @@
 
 <a href="/items/">Вернуться к списку книг</a>
 <br>
-<a href="/people/">Перейти к списку читателей</a>
+<a href="/showcases/">Перейти к списку читателей</a>
 
 <br>
 <hr>

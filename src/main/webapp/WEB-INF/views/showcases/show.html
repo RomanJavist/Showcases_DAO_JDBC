@@ -7,32 +7,32 @@
 <body>
 <p th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">VALUE</p>
 
-<div th:if="${books.isEmpty()}">
+<div th:if="${items.isEmpty()}">
     <p>Человек пока не взял ни одной книги</p>
     <hr/>
 </div>
 
-<div th:if="${!books.isEmpty()}">
+<div th:if="${!items.isEmpty()}">
     <hr>
     <b>Книги:</b>
     <br>
-    <table th:each="item : ${books}">
+    <table th:each="item : ${items}">
         <tr th:text="${item.getTitle() + ', ' + item.getAuthor() + ', ' + item.getYear()}">Book</tr>
     </table>
     <hr>
 </div>
 
 <hr>
-<a href="/people/">Вернуться к списку читателей</a>
+<a href="/showcases/">Вернуться к списку читателей</a>
 <br>
 <a href="/items/">Перейти к списку книг</a>
 <hr>
 
-<form th:method="GET" th:action="@{/people/{id}/edit(id=${showcase.getId()})}">
+<form th:method="GET" th:action="@{/showcases/{id}/edit(id=${showcase.getId()})}">
     <input type="submit" value="Редактировать читателя">
 </form>
 
-<form th:method="DELETE" th:action="@{/people/{id}(id=${showcase.getId()})}">
+<form th:method="DELETE" th:action="@{/showcases/{id}(id=${showcase.getId()})}">
     <input type="submit" value="Удалить читателя"/>
 </form>
 </body>
