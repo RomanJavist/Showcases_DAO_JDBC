@@ -2,38 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Информация о читателе</title>
+    <title>Информация о витрине</title>
 </head>
 <body>
 <p th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">VALUE</p>
 
-<div th:if="${items.isEmpty()}">
-    <p>Человек пока не взял ни одной книги</p>
-    <hr/>
-</div>
+<!--<div th:if="${items.isEmpty()}">-->
+<!--    <p>Человек пока не взял ни одной книги</p>-->
+<!--    <hr/>-->
+<!--</div>-->
 
-<div th:if="${!items.isEmpty()}">
-    <hr>
-    <b>Книги:</b>
-    <br>
-    <table th:each="item : ${items}">
-        <tr th:text="${item.getTitle() + ', ' + item.getAuthor() + ', ' + item.getYear()}">Book</tr>
-    </table>
-    <hr>
-</div>
+<!--<div th:if="${!items.isEmpty()}">-->
+<!--    <hr>-->
+<!--    <b>Книги:</b>-->
+<!--    <br>-->
+<!--    <table th:each="item : ${items}">-->
+<!--        <tr th:text="${item.getTitle() + ', ' + item.getAuthor() + ', ' + item.getYear()}">Book</tr>-->
+<!--    </table>-->
+<!--    <hr>-->
+<!--</div>-->
 
 <hr>
-<a href="/showcases/">Вернуться к списку читателей</a>
+<a href="/showcases/">Вернуться к списку витрин</a>
 <br>
-<a href="/items/">Перейти к списку книг</a>
+<a href="/items/">Перейти к списку товаров</a>
 <hr>
 
 <form th:method="GET" th:action="@{/showcases/{id}/edit(id=${showcase.getId()})}">
-    <input type="submit" value="Редактировать читателя">
+    <input type="submit" value="Редактировать витрину">
 </form>
 
 <form th:method="DELETE" th:action="@{/showcases/{id}(id=${showcase.getId()})}">
-    <input type="submit" value="Удалить читателя"/>
+    <input type="submit" value="Удалить витрину"/>
 </form>
 </body>
 </html>

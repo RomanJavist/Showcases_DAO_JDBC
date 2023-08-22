@@ -14,31 +14,31 @@
     </form>
 </div>
 
-<div th:if="${showcases}">
-    <span>Эта книга свободна. Кому ее назначить?</span>
-    <form th:method="PATCH" th:action="@{/items/{id}/assign(id=${item.getId()})}">
-        <label for="showcase">Выберите человека:</label>
-        <select th:object="${showcase}" th:field="*{id}" id="showcase">
-            <option th:each="showcase : ${showcases}" th:value="${showcase.getId()}" th:text="${showcase.getFullName()}">
-            </option>
-        </select>
-        <input type="submit" value="Назначить книгу"/>
-    </form>
-</div>
+<!--<div th:if="${showcases}">-->
+<!--    <span>Эта книга свободна. Кому ее назначить?</span>-->
+<!--    <form th:method="PATCH" th:action="@{/items/{id}/assign(id=${item.getId()})}">-->
+<!--        <label for="showcase">Выберите человека:</label>-->
+<!--        <select th:object="${showcase}" th:field="*{id}" id="showcase">-->
+<!--            <option th:each="showcase : ${showcases}" th:value="${showcase.getId()}" th:text="${showcase.getFullName()}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--        <input type="submit" value="Назначить книгу"/>-->
+<!--    </form>-->
+<!--</div>-->
 
-<a href="/items/">Вернуться к списку книг</a>
+<a href="/items/">Вернуться к списку товаров</a>
 <br>
-<a href="/showcases/">Перейти к списку читателей</a>
+<a href="/showcases/">Перейти к списку витрин</a>
 
 <br>
 <hr>
 
 <form th:method="GET" th:action="@{/items/{id}/edit(id=${item.getId()})}">
-    <input type="submit" value="Редактировать книгу">
+    <input type="submit" value="Редактировать товар">
 </form>
 
 <form th:method="DELETE" th:action="@{/items/{id}(id=${item.getId()})}">
-    <input type="submit" value="Удалить книгу"/>
+    <input type="submit" value="Удалить товар"/>
 </form>
 </body>
 </html>
