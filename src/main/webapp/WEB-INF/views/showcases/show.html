@@ -5,7 +5,7 @@
     <title>Информация о витрине</title>
 </head>
 <body>
-<p th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">VALUE</p>
+<p th:text="${showcase.getName() + ', ' + showcase.getAddress() + ', ' + showcase.getShowcaseType()}">VALUE</p>
 
 <!--<div th:if="${items.isEmpty()}">-->
 <!--    <p>Человек пока не взял ни одной книги</p>-->

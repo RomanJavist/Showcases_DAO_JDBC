@@ -34,10 +34,10 @@ public class ItemsController {
     public String show(@PathVariable("id") int id, Model model, @ModelAttribute("person") Showcase showcase) {
         model.addAttribute("item", itemDAO.show(id));
 
-        Optional<Showcase> bookOwner = itemDAO.getBookOwner(id);
+        Optional<Showcase> itemOwner = itemDAO.getItemOwner(id);
 
-        if (bookOwner.isPresent())
-            model.addAttribute("owner", bookOwner.get());
+        if (itemOwner.isPresent())
+            model.addAttribute("owner", itemOwner.get());
         else
             model.addAttribute("showcases", showcaseDAO.index());
 

@@ -31,7 +31,7 @@ public class ShowcasesController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("showcase", showcaseDAO.show(id));
-        model.addAttribute("items", showcaseDAO.getBooksByPersonId(id));
+        model.addAttribute("items", showcaseDAO.getBooksByShowcaseId(id));
         return "showcases/show";
     }
 

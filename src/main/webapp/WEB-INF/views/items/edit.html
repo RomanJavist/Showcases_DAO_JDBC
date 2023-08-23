@@ -7,17 +7,21 @@
 <body>
 
 <form th:method="PATCH" th:action="@{/items/{id}(id=${item.getId()})}" th:object="${item}">
-    <label for="title">Введите новое название: </label>
-    <input type="text" th:field="*{title}" id="title"/>
-    <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</div>
+    <label for="position">Введите новую позицию: </label>
+    <input type="text" th:field="*{position}" id="position"/>
+    <div style="color:red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Position Error</div>
     <br/>
-    <label for="author">Введите новое имя автора: </label>
-    <input type="text" th:field="*{author}" id="author"/>
-    <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</div>
+    <label for="name">Введите новое название: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
     <br/>
-    <label for="year">Введите новую дату издания: </label>
-    <input type="text" th:field="*{year}" id="year"/>
-    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error</div>
+<!--    <label for="author">Введите новый тип: </label>-->
+<!--    <input type="text" th:field="*{author}" id="author"/>-->
+<!--    <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</div>-->
+<!--    <br/>-->
+    <label for="price">Введите новую цену: </label>
+    <input type="text" th:field="*{price}" id="price"/>
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
     <br/>
     <input type="submit" value="Обновить данные"/>
 </form>

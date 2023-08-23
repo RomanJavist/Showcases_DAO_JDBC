@@ -2,23 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Список читателей</title>
+    <title>Список витрин</title>
 </head>
 <body>
 
 <div th:each="showcase : ${showcases}">
     <a th:href="@{/showcases/{id}(id=${showcase.getId()})}"
-       th:text="${showcase.getFullName() + ', ' + showcase.getYearOfBirth()}">user</a>
+       th:text="${showcase.getName() + ', ' + showcase.getAddress() + ', ' + showcase.getShowcaseType()}">showcase</a>
 </div>
 
 <br/>
 <hr/>
 
-<a href="/showcases/new">Создать нового читателя</a>
+<a href="/showcases/new">Создать новую витрину</a>
 
 <br/>
 <hr/>
-<a href="/items">Перейти в список книг</a>
+<a href="/items">Перейти в список товаров</a>
 
 </body>
 </html>

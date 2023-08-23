@@ -30,30 +30,30 @@ public class ItemDAO {
     }
 
     public void save(Item item) {
-        jdbcTemplate.update("INSERT INTO Item(title, author, year) VALUES(?, ?, ?)", item.getTitle(), item.getAuthor(), item.getYear());
+        jdbcTemplate.update("INSERT INTO Item(position, name, type, price) VALUES(?, ?, ?, ?)", item.getPosition(), item.getName(), item.getItemType(), item.getPrice());
     }
 
     public void update(int id, Item updatedItem) {
-        jdbcTemplate.update("UPDATE Item SET title=?, author=?, year=? WHERE id=?", updatedItem.getTitle(), updatedItem.getAuthor(), updatedItem.getYear(), id);
+        jdbcTemplate.update("UPDATE Item SET position=?, name=?, type=?, price=? WHERE id=?", updatedItem.getPosition(), updatedItem.getName(), updatedItem.getItemType(), updatedItem.getPrice(), id);
     }
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Item WHERE id=?", id);
     }
 
-    // Join-им таблицы Book и Person и получаем человека, которому принадлежит книга с указанным id
-    public Optional<Showcase> getBookOwner(int id) {
-        // Выбираем все колонки таблицы Person из объединенной таблицы
-        return jdbcTemplate.query("SELECT Showcase.* FROM Item JOIN Showcase ON Item.person_id = Showcase.id WHERE Item.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
+    // Join-им таблицы Item и Showcase и получаем витрину, которой принадлежит товар с указанным id
+    public Optional<Showcase> getItemOwner(int id) {
+        // Выбираем все колонки таблицы Showcase из объединенной таблицы
+        return jdbcTemplate.query("SELECT Showcase.* FROM Item JOIN Showcase ON Item.showcase_id = Showcase.id WHERE Item.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
     }
 
-    // Освобождает книгу (этот метод вызывается, когда человек возвращает книгу в библиотеку)
+    // Освобождает товар (этот метод вызывается, когда витрина возвращает товар на склад)
     public void release(int id) {
-        jdbcTemplate.update("UPDATE Item SET person_id = NULL WHERE id = ?", id);
+        jdbcTemplate.update("UPDATE Item SET showcase_id = NULL WHERE id = ?", id);
     }
 
-    // Назначает книгу человеку (этот метод вызывается, когда человек забирает книгу из библиотеки)
+    // Назначает товар витрине (этот метод вызывается, когда витрина забирает товар со склада)
     public void assign(int id, Showcase selectedShowcase) {
-        jdbcTemplate.update("UPDATE Item SET person_id=? WHERE id=?", selectedShowcase.getId(), id);
+        jdbcTemplate.update("UPDATE Item SET showcase_id=? WHERE id=?", selectedShowcase.getId(), id);
     }
 }

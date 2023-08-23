@@ -30,12 +30,12 @@ public class ShowcaseDAO {
     }
 
     public void save(Showcase showcase) {
-        jdbcTemplate.update("INSERT INTO Showcase(full_name, year_of_birth) VALUES(?, ?)", showcase.getFullName(), showcase.getYearOfBirth());
+        jdbcTemplate.update("INSERT INTO Showcase(name, address, type) VALUES(?, ?, ?)", showcase.getName(), showcase.getAddress(), showcase.getShowcaseType());
     }
 
     public void update(int id, Showcase updatedShowcase) {
-        jdbcTemplate.update("UPDATE Showcase SET full_name=?, year_of_birth=? WHERE id=?", updatedShowcase.getFullName(),
-                updatedShowcase.getYearOfBirth(), id);
+        jdbcTemplate.update("UPDATE Showcase SET name=?, address=?, type=? WHERE id=?", updatedShowcase.getName(),
+                updatedShowcase.getAddress(), updatedShowcase.getShowcaseType(), id);
     }
 
     public void delete(int id) {
@@ -43,13 +43,13 @@ public class ShowcaseDAO {
     }
 
     // Для валидации уникальности ФИО
-    public Optional<Showcase> getPersonByFullName(String fullName) {
-        return jdbcTemplate.query("SELECT * FROM Showcase WHERE full_name=?", new Object[]{fullName}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
+    public Optional<Showcase> getPersonByFullName(String name) {
+        return jdbcTemplate.query("SELECT * FROM Showcase WHERE name=?", new Object[]{name}, new BeanPropertyRowMapper<>(Showcase.class)).stream().findAny();
     }
 
-    // Здесь Join не нужен. Так как уже получили человека с помощью отдельного метода
-    public List<Item> getBooksByPersonId(int id) {
-        return jdbcTemplate.query("SELECT * FROM Item WHERE person_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Item.class));
+    // Здесь Join не нужен. Так как уже получили витрину с помощью отдельного метода
+    public List<Item> getBooksByShowcaseId(int id) {
+        return jdbcTemplate.query("SELECT * FROM Item WHERE showcase_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Item.class));
     }
 }
 
