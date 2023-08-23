@@ -4,25 +4,35 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.lang.reflect.Type;
+import java.util.Date;
 
 public class Item {
 
+
     private int id;
+
+    private int position;
     @NotEmpty(message = "Книга не может быть без названия")
     @Size(min = 2, max = 100, message = "Название книги должно быть длиной от 2 до 100 символов")
-    private String title;
-    @NotEmpty(message = "Книга не может быть без автора")
-    @Size(min = 2, max = 50, message = "Имя автора должно быть длиной от 2 до 50 символов")
-    private String author;
-    @Min(value = 1500, message = "Год должен быть больше, чем 1500")
-    @Max(value = 2024, message = "Год должен быть меньше, чем 2024")
-    private int year;
+    private String name;
+
+
+    private Type itemType;
+
+
+    private double price;
+
+    private Date date_create;
+    private Date date_edit;
 
     public Item(){}
-    public Item(String title, String author, int year) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
+
+    public Item(int position, String name, Type itemType, double price) {
+        this.position = position;
+        this.name = name;
+        this.itemType = itemType;
+        this.price = price;
     }
 
     public int getId() {
@@ -33,27 +43,51 @@ public class Item {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public int getPosition() {
+        return position;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getName() {
+        return name;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getYear() {
-        return year;
+    public Type getItemType() {
+        return itemType;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setItemType(Type itemType) {
+        this.itemType = itemType;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Date getDate_create() {
+        return date_create;
+    }
+
+    public void setDate_create(Date date_create) {
+        this.date_create = date_create;
+    }
+
+    public Date getDate_edit() {
+        return date_edit;
+    }
+
+    public void setDate_edit(Date date_edit) {
+        this.date_edit = date_edit;
     }
 }
